@@ -63,20 +63,20 @@
                           <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
                           <Component id="TxtFieldNombreRE" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="TxtFieldIdRE" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="TxtFieldFechaRE" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="TxtFieldIdRE" min="-2" pref="71" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jScrollPane2" min="-2" pref="526" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="ComboBoxTipoRE" min="-2" pref="258" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
-                                      <Component id="CheckBoxActivaRE" min="-2" pref="103" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="LblFechaMostrarRE" min="-2" pref="167" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jScrollPane2" min="-2" pref="526" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="ComboBoxTipoRE" min="-2" pref="258" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
+                                          <Component id="CheckBoxActivaRE" min="-2" pref="103" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -116,12 +116,12 @@
                   <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                   <Component id="LblPreparacionRE" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="LblFechaRE" alignment="3" max="32767" attributes="0"/>
-                  <Component id="TxtFieldFechaRE" alignment="3" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="LblFechaMostrarRE" pref="24" max="32767" attributes="0"/>
+                  <Component id="LblFechaRE" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="BtnAtrasRE" alignment="3" pref="63" max="32767" attributes="0"/>
                   <Component id="BtnCrearRecetaRE" alignment="3" pref="63" max="32767" attributes="0"/>
@@ -285,12 +285,12 @@
         <Property name="text" type="java.lang.String" value="Id:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="TxtFieldFechaRE">
+    <Component class="javax.swing.JLabel" name="LblFechaMostrarRE">
       <Properties>
-        <Property name="editable" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Calibri Light" size="18" style="0"/>
+          <Font name="Calibri Light" size="18" style="1"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="Fecha"/>
       </Properties>
     </Component>
   </SubComponents>

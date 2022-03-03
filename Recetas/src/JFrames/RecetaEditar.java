@@ -48,7 +48,7 @@ public class RecetaEditar extends javax.swing.JFrame {
         TxtAreaIngredientesRE = new javax.swing.JTextArea();
         TxtFieldIdRE = new javax.swing.JTextField();
         LblIdRE = new javax.swing.JLabel();
-        TxtFieldFechaRE = new javax.swing.JTextField();
+        LblFechaMostrarRE = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -117,8 +117,8 @@ public class RecetaEditar extends javax.swing.JFrame {
         LblIdRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         LblIdRE.setText("Id:");
 
-        TxtFieldFechaRE.setEditable(false);
-        TxtFieldFechaRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+        LblFechaMostrarRE.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
+        LblFechaMostrarRE.setText("Fecha");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,18 +153,18 @@ public class RecetaEditar extends javax.swing.JFrame {
                             .addComponent(jScrollPane1)
                             .addComponent(TxtFieldNombreRE, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(TxtFieldIdRE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TxtFieldFechaRE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(TxtFieldIdRE, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(ComboBoxTipoRE, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(165, 165, 165)
-                                        .addComponent(CheckBoxActivaRE, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LblFechaMostrarRE, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(ComboBoxTipoRE, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(165, 165, 165)
+                                            .addComponent(CheckBoxActivaRE, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(19, 19, 19))))
         );
         layout.setVerticalGroup(
@@ -191,11 +191,11 @@ public class RecetaEditar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LblPreparacionRE, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblFechaRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TxtFieldFechaRE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LblFechaMostrarRE, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                    .addComponent(LblFechaRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnAtrasRE, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
                     .addComponent(BtnCrearRecetaRE, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
@@ -290,7 +290,7 @@ public class RecetaEditar extends javax.swing.JFrame {
         ComboBoxTipoRE.setSelectedIndex(index);
         TxtAreaIngredientesRE.setText(ingredientes);
         TxtAreaPreparacionRE.setText(preparacion);
-        TxtFieldFechaRE.setText(fecha);
+        LblFechaMostrarRE.setText(fecha);
         if(activa == 1) {
             CheckBoxActivaRE.setSelected(true);
         } else {
@@ -350,6 +350,7 @@ public class RecetaEditar extends javax.swing.JFrame {
     private javax.swing.JButton BtnCrearRecetaRE;
     private javax.swing.JCheckBox CheckBoxActivaRE;
     private javax.swing.JComboBox<String> ComboBoxTipoRE;
+    private javax.swing.JLabel LblFechaMostrarRE;
     private javax.swing.JLabel LblFechaRE;
     private javax.swing.JLabel LblIdRE;
     private javax.swing.JLabel LblIngredientesRE;
@@ -358,7 +359,6 @@ public class RecetaEditar extends javax.swing.JFrame {
     private javax.swing.JLabel LblTipoRE;
     private javax.swing.JTextArea TxtAreaIngredientesRE;
     private javax.swing.JTextArea TxtAreaPreparacionRE;
-    private javax.swing.JTextField TxtFieldFechaRE;
     private javax.swing.JTextField TxtFieldIdRE;
     private javax.swing.JTextField TxtFieldNombreRE;
     private javax.swing.JScrollPane jScrollPane1;
