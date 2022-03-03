@@ -20,9 +20,13 @@ public class Recetas extends javax.swing.JFrame {
     ResultSet rs = null;
     Statement st = null;
     
-    DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableModel modelo = new DefaultTableModel() { //sobrescribo el metodo isCellEditable para que no se pueda editar la tabla.
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
     
-    DefaultListModel modelo1 = new DefaultListModel();
     ArrayList<Receta> recetasArrayObjetos= new ArrayList();
     
     
@@ -97,6 +101,11 @@ public class Recetas extends javax.swing.JFrame {
         });
         JTableRecetas.setToolTipText("");
         JTableRecetas.setRowHeight(32);
+        JTableRecetas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTableRecetasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(JTableRecetas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -146,6 +155,43 @@ public class Recetas extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_BtnCrearRecetaActionPerformed
+
+    private void JTableRecetasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTableRecetasMouseClicked
+        
+        //al hacer doble click:
+        if (evt.getClickCount() == 2) {
+            //JOptionPane.showMessageDialog(rootPane, "Has dado click en la receta: " + JTableRecetas.getSelectedRow());
+            
+            //recoger el valor del id, es el 1r numero:
+            int id, row;
+            Receta r = new Receta();
+
+            row = JTableRecetas.getSelectedRow();
+            Object f = JTableRecetas.getValueAt(row, 0);
+            String d = f.toString();
+            id = Integer.parseInt(d);
+
+            
+            //busco el objeto seleccionado segun el id
+            for (int x = 0; x < recetasArrayObjetos.size(); x++) {
+                if (id == recetasArrayObjetos.get(x).getId()) {
+                    r = recetasArrayObjetos.get(x);
+                }
+            }
+
+            //añado el objeto r al paquete que envio a la pantalla "RecetaVer".
+            RecetaVer abrir = new RecetaVer();
+            abrir.id = r.getId();
+            abrir.nombre = r.getNombre();
+            abrir.tipo = r.getTipo();
+            abrir.ingredientes = r.getIngredientes();
+            abrir.preparacion = r.getPreparacion();
+            abrir.fecha = r.getFecha();
+            abrir.activa = r.getActiva();
+            abrir.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_JTableRecetasMouseClicked
 
     
     

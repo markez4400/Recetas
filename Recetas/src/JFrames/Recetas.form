@@ -122,6 +122,9 @@
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="rowHeight" type="int" value="32"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="JTableRecetasMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
