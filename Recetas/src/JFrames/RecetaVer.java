@@ -19,7 +19,7 @@ public class RecetaVer extends javax.swing.JFrame {
     Connection con = cc.conectar();
     
     String nombre, tipo, ingredientes, preparacion, fecha;
-    int id, activa;
+    int id;
     
     
     public RecetaVer() {
@@ -44,7 +44,6 @@ public class RecetaVer extends javax.swing.JFrame {
         LblPreparacionRV = new javax.swing.JLabel();
         LblFechaRV = new javax.swing.JLabel();
         BtnAtrasRV = new javax.swing.JButton();
-        CheckBoxActivaRV = new javax.swing.JCheckBox();
         LblNombreEditarRV = new javax.swing.JLabel();
         LblTipoEditarRV = new javax.swing.JLabel();
         BtnEliminarRV = new javax.swing.JButton();
@@ -99,10 +98,6 @@ public class RecetaVer extends javax.swing.JFrame {
                 BtnAtrasRVActionPerformed(evt);
             }
         });
-
-        CheckBoxActivaRV.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        CheckBoxActivaRV.setText("Activa");
-        CheckBoxActivaRV.setEnabled(false);
 
         LblNombreEditarRV.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         LblNombreEditarRV.setText("Nombre:");
@@ -175,12 +170,9 @@ public class RecetaVer extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LblIdEditarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LblFechaEditarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(LblTipoEditarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(CheckBoxActivaRV)))
+                            .addComponent(LblFechaEditarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LblTipoEditarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -197,9 +189,8 @@ public class RecetaVer extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LblTipoRecetaRV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LblTipoEditarRV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CheckBoxActivaRV))
-                .addGap(22, 22, 22)
+                    .addComponent(LblTipoEditarRV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LblIngredientesRV, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -255,7 +246,6 @@ public class RecetaVer extends javax.swing.JFrame {
         abrir.ingredientes = ingredientes;
         abrir.preparacion = preparacion;
         abrir.fecha = fecha;
-        abrir.activa = activa;
         abrir.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BtnActualizarRVActionPerformed
@@ -277,11 +267,6 @@ public class RecetaVer extends javax.swing.JFrame {
         TxtAreaIngredientesRV.setText(ingredientes);
         TxtAreaPreparacionRV.setText(preparacion);
         LblFechaEditarRV.setText(fecha);
-        if(activa == 1){
-            CheckBoxActivaRV.setSelected(true);
-        }else{
-            CheckBoxActivaRV.setSelected(false);
-        }
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -324,7 +309,6 @@ public class RecetaVer extends javax.swing.JFrame {
     private javax.swing.JButton BtnActualizarRV;
     private javax.swing.JButton BtnAtrasRV;
     private javax.swing.JButton BtnEliminarRV;
-    private javax.swing.JCheckBox CheckBoxActivaRV;
     private javax.swing.JLabel LblFechaEditarRV;
     private javax.swing.JLabel LblFechaRV;
     private javax.swing.JLabel LblIdEditarRV;

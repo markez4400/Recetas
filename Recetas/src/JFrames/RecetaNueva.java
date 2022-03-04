@@ -40,7 +40,6 @@ public class RecetaNueva extends javax.swing.JFrame {
         TxtAreaPreparacionRN = new javax.swing.JTextArea();
         LblTipoRN = new javax.swing.JLabel();
         LblPreparacionRN = new javax.swing.JLabel();
-        CheckBoxActivaRN = new javax.swing.JCheckBox();
         ComboBoxTipoRN = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         TxtAreaIngredientesRN1 = new javax.swing.JTextArea();
@@ -84,9 +83,6 @@ public class RecetaNueva extends javax.swing.JFrame {
         LblPreparacionRN.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         LblPreparacionRN.setText("Preparación:");
 
-        CheckBoxActivaRN.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        CheckBoxActivaRN.setText("Activa");
-
         ComboBoxTipoRN.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         ComboBoxTipoRN.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrante", "Primero", "Segundo", "Plato Combinado", "Postre" }));
         ComboBoxTipoRN.setSelectedIndex(-1);
@@ -102,27 +98,27 @@ public class RecetaNueva extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LblIngredientesRN, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(LblTipoRN, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(LblNombreRN, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(LblPreparacionRN, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TxtFieldNombreRN, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ComboBoxTipoRN, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(132, 132, 132)
-                        .addComponent(CheckBoxActivaRN, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(19, 19, 19))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BtnAtrasRN, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BtnCrearRecetaRN, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(LblIngredientesRN)
+                    .addComponent(LblTipoRN)
+                    .addComponent(LblNombreRN)
+                    .addComponent(LblPreparacionRN)
+                    .addComponent(BtnAtrasRN, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BtnCrearRecetaRN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TxtFieldNombreRN)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ComboBoxTipoRN, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 288, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -132,20 +128,19 @@ public class RecetaNueva extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LblNombreRN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(TxtFieldNombreRN))
-                .addGap(23, 23, 23)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LblTipoRN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ComboBoxTipoRN)
-                    .addComponent(CheckBoxActivaRN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ComboBoxTipoRN))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LblIngredientesRN)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LblPreparacionRN)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LblPreparacionRN))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnCrearRecetaRN, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnAtrasRN, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -172,7 +167,6 @@ public class RecetaNueva extends javax.swing.JFrame {
         String ingredientes = "";
         String preparacion = "";
         String fecha = "";
-        int activa;   
                 
         //1. recoger valores en variables:
         nombre = TxtFieldNombreRN.getText();
@@ -180,17 +174,12 @@ public class RecetaNueva extends javax.swing.JFrame {
         ingredientes = TxtAreaPreparacionRN.getText();
         preparacion = TxtAreaPreparacionRN.getText();
         fecha = fechaActual();
-        if (CheckBoxActivaRN.isSelected()) {
-            activa = 1;
-        } else {
-            activa = 0;
-        }
 
         //2. Restricciones
         if(comprovarVariables(nombre, tipo, ingredientes, preparacion)){
-            String SQL = "INSERT INTO recetas (nombre, tipo, ingredientes, preparacion, activa, fecha)"
+            String SQL = "INSERT INTO recetas (nombre, tipo, ingredientes, preparacion, fecha)"
                     + "VALUES('" + nombre + "','" + tipo + "','" + ingredientes + "',"
-                    + "'" + preparacion + "','" + activa + "','" + fecha + "')";
+                    + "'" + preparacion + "','" + fecha + "')";
             
             //3. agrego SQL a la base de datos
             cc.crearReceta(SQL, con);
@@ -270,7 +259,6 @@ public class RecetaNueva extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAtrasRN;
     private javax.swing.JButton BtnCrearRecetaRN;
-    private javax.swing.JCheckBox CheckBoxActivaRN;
     private javax.swing.JComboBox<String> ComboBoxTipoRN;
     private javax.swing.JLabel LblIngredientesRN;
     private javax.swing.JLabel LblNombreRN;

@@ -12,7 +12,6 @@ public class Receta {
     protected String    ingredientes;
     protected String    preparacion;
     protected String    fecha;
-    protected int       activa;
 
     public Receta(int id, String nombre, String tipo, String ingredientes, String preparacion, String fecha, int activa) {
         this.id = id;
@@ -21,7 +20,6 @@ public class Receta {
         this.ingredientes = ingredientes;
         this.preparacion = preparacion;
         this.fecha = fecha;
-        this.activa = activa;
     }
     
     public Receta(){ //constructor vacio
@@ -74,14 +72,6 @@ public class Receta {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
-    }
-
-    public int getActiva() {
-        return activa;
-    }
-
-    public void setActiva(int activa) {
-        this.activa = activa;
     }
     
     

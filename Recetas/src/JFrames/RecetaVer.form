@@ -77,13 +77,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="LblIdEditarRV" min="-2" pref="88" max="-2" attributes="0"/>
                           <Component id="LblFechaEditarRV" min="-2" pref="85" max="-2" attributes="0"/>
+                          <Component id="LblTipoEditarRV" min="-2" pref="188" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="LblTipoEditarRV" min="-2" pref="188" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="CheckBoxActivaRV" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -107,9 +103,8 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="LblTipoRecetaRV" alignment="3" max="32767" attributes="0"/>
                   <Component id="LblTipoEditarRV" alignment="3" max="32767" attributes="0"/>
-                  <Component id="CheckBoxActivaRV" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" min="-2" pref="125" max="-2" attributes="0"/>
                   <Component id="LblIngredientesRV" min="-2" pref="34" max="-2" attributes="0"/>
@@ -186,15 +181,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnAtrasRVActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="CheckBoxActivaRV">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Calibri Light" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Activa"/>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="LblNombreEditarRV">
       <Properties>

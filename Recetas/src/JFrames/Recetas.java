@@ -187,7 +187,6 @@ public class Recetas extends javax.swing.JFrame {
             abrir.ingredientes = r.getIngredientes();
             abrir.preparacion = r.getPreparacion();
             abrir.fecha = r.getFecha();
-            abrir.activa = r.getActiva();
             abrir.setVisible(true);
             this.dispose();
         }
@@ -256,7 +255,6 @@ public class Recetas extends javax.swing.JFrame {
                 r1.setIngredientes(rs.getString("ingredientes"));
                 r1.setPreparacion(rs.getString("preparacion"));
                 r1.setFecha(rs.getString("fecha"));
-                r1.setActiva(rs.getInt("activa"));
                 
                 //ahora almacenamos el objeto en el arraylist:               
                 recetasArrayObjetos.add(r1);

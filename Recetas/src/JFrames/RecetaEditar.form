@@ -74,8 +74,7 @@
                                       <Component id="jScrollPane2" min="-2" pref="526" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Component id="ComboBoxTipoRE" min="-2" pref="258" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
-                                          <Component id="CheckBoxActivaRE" min="-2" pref="103" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="268" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -100,13 +99,12 @@
                   <Component id="TxtFieldNombreRE" alignment="3" max="32767" attributes="0"/>
                   <Component id="LblNombreRE" alignment="3" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="LblTipoRE" alignment="3" max="32767" attributes="0"/>
                   <Component id="ComboBoxTipoRE" alignment="3" max="32767" attributes="0"/>
-                  <Component id="CheckBoxActivaRE" alignment="3" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                   <Component id="LblIngredientesRE" min="-2" max="-2" attributes="0"/>
@@ -189,14 +187,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnCrearRecetaREActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="CheckBoxActivaRE">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Calibri Light" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Activa"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="LblNombreRE">
       <Properties>

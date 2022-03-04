@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class RecetaEditar extends javax.swing.JFrame {
 
     String nombre, tipo, ingredientes, preparacion, fecha;
-    int id, activa;
+    int id;
 
     //conexion
     ConexionMYSQLServer cc = new ConexionMYSQLServer();
@@ -38,7 +38,6 @@ public class RecetaEditar extends javax.swing.JFrame {
         BtnAtrasRE = new javax.swing.JButton();
         LblPreparacionRE = new javax.swing.JLabel();
         BtnCrearRecetaRE = new javax.swing.JButton();
-        CheckBoxActivaRE = new javax.swing.JCheckBox();
         LblNombreRE = new javax.swing.JLabel();
         LblFechaRE = new javax.swing.JLabel();
         TxtFieldNombreRE = new javax.swing.JTextField();
@@ -85,9 +84,6 @@ public class RecetaEditar extends javax.swing.JFrame {
                 BtnCrearRecetaREActionPerformed(evt);
             }
         });
-
-        CheckBoxActivaRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        CheckBoxActivaRE.setText("Activa");
 
         LblNombreRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         LblNombreRE.setText("Nombre:");
@@ -163,8 +159,7 @@ public class RecetaEditar extends javax.swing.JFrame {
                                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(ComboBoxTipoRE, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(165, 165, 165)
-                                            .addComponent(CheckBoxActivaRE, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addGap(268, 268, 268))))))
                         .addGap(19, 19, 19))))
         );
         layout.setVerticalGroup(
@@ -178,12 +173,11 @@ public class RecetaEditar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TxtFieldNombreRE)
                     .addComponent(LblNombreRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(10, 10, 10)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LblTipoRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ComboBoxTipoRE)
-                    .addComponent(CheckBoxActivaRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(21, 21, 21)
+                    .addComponent(ComboBoxTipoRE))
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LblIngredientesRE))
@@ -291,17 +285,12 @@ public class RecetaEditar extends javax.swing.JFrame {
         TxtAreaIngredientesRE.setText(ingredientes);
         TxtAreaPreparacionRE.setText(preparacion);
         LblFechaMostrarRE.setText(fecha);
-        if(activa == 1) {
-            CheckBoxActivaRE.setSelected(true);
-        } else {
-            CheckBoxActivaRE.setSelected(false);
-        }
     }
 
     public void modificarReceta() {
         //declaro variables
         String nombreE = "", tipoE = "", ingredientesE = "", preparacionE = "";
-        int activaE, idE;
+        int idE;
         boolean todoOk = false;
 
         //recogo valores de los campos y los guardo en las variables
@@ -310,11 +299,6 @@ public class RecetaEditar extends javax.swing.JFrame {
         tipoE = ComboBoxTipoRE.getItemAt(ComboBoxTipoRE.getSelectedIndex());
         ingredientesE = TxtAreaIngredientesRE.getText();
         preparacionE = TxtAreaPreparacionRE.getText();
-        if (CheckBoxActivaRE.isSelected()) {
-            activaE = 1;
-        } else {
-            activaE = 0;
-        }
 
         //comprovaciones varias de que los valores son correctos
         if (nombreE.equals("")) {
@@ -333,8 +317,8 @@ public class RecetaEditar extends javax.swing.JFrame {
             //guardar datos en base de datos usando UPDATE
             //la fecha no se toca nunca, (el id creo que tampoco)
             String SQL = "UPDATE recetas SET nombre = '" + nombreE + "', "
-                    + "tipo = '" + tipoE + "', ingredientes = '" + ingredientesE + "', preparacion = '" + preparacionE + "', activa = '"+activaE+"'"
-                    + " WHERE id = '" + idE + "'";
+                    + "tipo = '" + tipoE + "', ingredientes = '" + ingredientesE + "',"
+                    + " preparacion = '"+preparacionE+"'WHERE id = '" + idE + "'";
             cc.actualizarReceta(SQL, con);
             
             //vuelvo a recetas
@@ -348,7 +332,6 @@ public class RecetaEditar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAtrasRE;
     private javax.swing.JButton BtnCrearRecetaRE;
-    private javax.swing.JCheckBox CheckBoxActivaRE;
     private javax.swing.JComboBox<String> ComboBoxTipoRE;
     private javax.swing.JLabel LblFechaMostrarRE;
     private javax.swing.JLabel LblFechaRE;
