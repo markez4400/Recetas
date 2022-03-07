@@ -6,8 +6,6 @@ import java.sql.Connection;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-
-
 /**
  *
  * @author markez
@@ -17,11 +15,10 @@ public class RecetaVer extends javax.swing.JFrame {
     //conexion
     ConexionMYSQLServer cc = new ConexionMYSQLServer();
     Connection con = cc.conectar();
-    
+
     String nombre, tipo, ingredientes, preparacion, fecha, ultimaModificacion;
     int id;
-    
-    
+
     public RecetaVer() {
         initComponents();
     }
@@ -227,17 +224,24 @@ public class RecetaVer extends javax.swing.JFrame {
     private void BtnEliminarRVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarRVActionPerformed
         // TODO add your handling code here:
         
-        //mostrar ventana de verificacion (esta seguro??)
-        JOptionPane.showConfirmDialog(null, "Seguro que quieres eliminar la receta " + nombre + "?",
-                "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        //borrar receta de la bd + mostrar mensaje de que se ha borrado.
-        String SQL = "DELETE FROM recetas WHERE id = '"+id+"'";
-        cc.borrarReceta(SQL, con);
         
-        //ir a pantalla recetas, cierro la actual.
-        Recetas abrir = new Recetas();
-        abrir.setVisible(true);
-        this.dispose();
+        if (JOptionPane.showConfirmDialog(null, "Seguro que deseas borrar la receta?", "Aviso importante!",
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) 
+        {
+            //yes option
+            
+           //borrar receta de la bd + mostrar mensaje de que se ha borrado.
+            String SQL = "DELETE FROM recetas WHERE id = '" + id + "'";
+            cc.borrarReceta(SQL, con);
+            
+            //una vez borrada, volvemos al JFrame "recetas".
+            Recetas abrir = new Recetas();
+            abrir.setVisible(true);
+            this.dispose();
+        } else {
+            // no option
+        }
+        
     }//GEN-LAST:event_BtnEliminarRVActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -268,8 +272,7 @@ public class RecetaVer extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BtnAtrasRVActionPerformed
 
-    
-    
+
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
         LblIdEditarRV.setText(String.valueOf(id));
@@ -315,7 +318,7 @@ public class RecetaVer extends javax.swing.JFrame {
             }
         });
     }
-        
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnActualizarRV;
