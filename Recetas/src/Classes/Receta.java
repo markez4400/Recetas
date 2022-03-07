@@ -6,26 +6,32 @@ package Classes;
  */
 public class Receta {
     
+    //Atributos
     protected int       id;
     protected String    nombre;
     protected String    tipo;
     protected String    ingredientes;
     protected String    preparacion;
     protected String    fecha;
+    protected String    ultimaModificacion;
 
-    public Receta(int id, String nombre, String tipo, String ingredientes, String preparacion, String fecha, int activa) {
+    //Constructores
+    public Receta(int id, String nombre, String tipo, String ingredientes, String preparacion, String fecha, String ultimaModificacion) {
         this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;
         this.ingredientes = ingredientes;
         this.preparacion = preparacion;
         this.fecha = fecha;
+        this.ultimaModificacion = ultimaModificacion;
     }
     
     public Receta(){ //constructor vacio
         
     }
 
+    
+    //Getters & Setters
     public int getId() {
         return id;
     }
@@ -73,6 +79,18 @@ public class Receta {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
+    public String getUltimaModificacion() {
+        return ultimaModificacion;
+    }
+
+    public void setUltimaModificacion(String ultimaModificacion) {
+        this.ultimaModificacion = ultimaModificacion;
+    }
+    
+    
+    
+    //Operaciones / Metodos
     
     
     
