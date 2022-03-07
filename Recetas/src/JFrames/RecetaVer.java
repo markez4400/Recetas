@@ -51,12 +51,10 @@ public class RecetaVer extends javax.swing.JFrame {
         LblFechaEditarRV = new javax.swing.JLabel();
         LblIdRV = new javax.swing.JLabel();
         LblIdEditarRV = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TxtAreaIngredientesRV = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        TxtAreaPreparacionRV = new javax.swing.JTextArea();
         LblUltimaModificacionRV = new javax.swing.JLabel();
         LblUltimaModificacionEditarRV = new javax.swing.JLabel();
+        LblPreparacionMostrarRV = new javax.swing.JLabel();
+        LblIngredientesMostrarRV = new javax.swing.JLabel();
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel4.setText("Nombre:");
@@ -132,25 +130,19 @@ public class RecetaVer extends javax.swing.JFrame {
         LblIdEditarRV.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         LblIdEditarRV.setText("Nombre:");
 
-        TxtAreaIngredientesRV.setEditable(false);
-        TxtAreaIngredientesRV.setColumns(20);
-        TxtAreaIngredientesRV.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
-        TxtAreaIngredientesRV.setLineWrap(true);
-        TxtAreaIngredientesRV.setRows(5);
-        jScrollPane1.setViewportView(TxtAreaIngredientesRV);
-
-        TxtAreaPreparacionRV.setEditable(false);
-        TxtAreaPreparacionRV.setColumns(20);
-        TxtAreaPreparacionRV.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
-        TxtAreaPreparacionRV.setLineWrap(true);
-        TxtAreaPreparacionRV.setRows(5);
-        jScrollPane2.setViewportView(TxtAreaPreparacionRV);
-
         LblUltimaModificacionRV.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         LblUltimaModificacionRV.setText("Ultima modificación:");
 
         LblUltimaModificacionEditarRV.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         LblUltimaModificacionEditarRV.setText("Nombre:");
+
+        LblPreparacionMostrarRV.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
+        LblPreparacionMostrarRV.setText("tipo receta");
+        LblPreparacionMostrarRV.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        LblIngredientesMostrarRV.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
+        LblIngredientesMostrarRV.setText("tipo receta");
+        LblIngredientesMostrarRV.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -168,24 +160,24 @@ public class RecetaVer extends javax.swing.JFrame {
                     .addComponent(BtnAtrasRV, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(BtnEliminarRV, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(BtnActualizarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2)
                     .addComponent(LblNombreEditarRV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LblTipoEditarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LblIdEditarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LblFechaEditarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(LblUltimaModificacionRV)
                         .addGap(18, 18, 18)
-                        .addComponent(LblUltimaModificacionEditarRV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(LblUltimaModificacionEditarRV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LblTipoEditarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LblIdEditarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(LblPreparacionMostrarRV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LblIngredientesMostrarRV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -204,19 +196,22 @@ public class RecetaVer extends javax.swing.JFrame {
                     .addComponent(LblTipoRecetaRV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(LblTipoEditarRV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LblIngredientesRV, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LblPreparacionRV, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblFechaEditarRV)
-                    .addComponent(LblFechaRV)
+                    .addComponent(LblIngredientesRV, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LblIngredientesMostrarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LblPreparacionRV, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(LblPreparacionMostrarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LblUltimaModificacionRV)
-                    .addComponent(LblUltimaModificacionEditarRV))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LblFechaEditarRV)
+                        .addComponent(LblFechaRV)
+                        .addComponent(LblUltimaModificacionEditarRV)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnEliminarRV, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
@@ -280,8 +275,8 @@ public class RecetaVer extends javax.swing.JFrame {
         LblIdEditarRV.setText(String.valueOf(id));
         LblNombreEditarRV.setText(nombre);
         LblTipoEditarRV.setText(tipo);
-        TxtAreaIngredientesRV.setText(ingredientes);
-        TxtAreaPreparacionRV.setText(preparacion);
+        LblIngredientesMostrarRV.setText("<html>" + ingredientes + "<html>"); //<htmml> para que haga automaticamente los saltos de linea
+        LblPreparacionMostrarRV.setText("<html>" + preparacion + "<html>");
         LblFechaEditarRV.setText(fecha);
         LblUltimaModificacionEditarRV.setText(ultimaModificacion);
     }//GEN-LAST:event_formWindowActivated
@@ -330,20 +325,18 @@ public class RecetaVer extends javax.swing.JFrame {
     private javax.swing.JLabel LblFechaRV;
     private javax.swing.JLabel LblIdEditarRV;
     private javax.swing.JLabel LblIdRV;
+    private javax.swing.JLabel LblIngredientesMostrarRV;
     private javax.swing.JLabel LblIngredientesRV;
     private javax.swing.JLabel LblNombreEditarRV;
     private javax.swing.JLabel LblNombreRV;
+    private javax.swing.JLabel LblPreparacionMostrarRV;
     private javax.swing.JLabel LblPreparacionRV;
     private javax.swing.JLabel LblTipoEditarRV;
     private javax.swing.JLabel LblTipoRecetaRV;
     private javax.swing.JLabel LblUltimaModificacionEditarRV;
     private javax.swing.JLabel LblUltimaModificacionRV;
-    private javax.swing.JTextArea TxtAreaIngredientesRV;
-    private javax.swing.JTextArea TxtAreaPreparacionRV;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
