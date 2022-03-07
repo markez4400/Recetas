@@ -43,7 +43,7 @@ public class Inicio extends javax.swing.JFrame {
         setTitle("Menu Principal");
 
         BtnRecetas.setFont(new java.awt.Font("Calibri Light", 1, 48)); // NOI18N
-        BtnRecetas.setText("RECETAS");
+        BtnRecetas.setText("RECETASss");
         BtnRecetas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnRecetasActionPerformed(evt);
