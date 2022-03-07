@@ -179,7 +179,7 @@ public class RecetaNueva extends javax.swing.JFrame {
 
         //2. Restricciones
         if(comprovarVariables(nombre, tipo, ingredientes, preparacion)){
-            String SQL = "INSERT INTO recetas (nombre, tipo, ingredientes, preparacion, fecha, ultimaModificacion)"
+            String SQL = "INSERT INTO recetas (nombre, tipo, ingredientes, preparacion, fecha, ultima_modificacion)"
                     + "VALUES('" + nombre + "','" + tipo + "','" + ingredientes + "',"
                     + "'" + preparacion + "','" + fecha + "', '"+ultimaModificacion+"')";
             
