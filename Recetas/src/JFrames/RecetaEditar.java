@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  */
 public class RecetaEditar extends javax.swing.JFrame {
 
-    String nombre, tipo, ingredientes, preparacion, fecha;
+    String nombre, tipo, ingredientes, preparacion, fecha, ultimaModificacion;
     int id;
 
     //conexion
@@ -48,6 +48,8 @@ public class RecetaEditar extends javax.swing.JFrame {
         TxtFieldIdRE = new javax.swing.JTextField();
         LblIdRE = new javax.swing.JLabel();
         LblFechaMostrarRE = new javax.swing.JLabel();
+        LblUltimaModificacionRE = new javax.swing.JLabel();
+        LblUltimaModificacionMostrarRE = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -116,6 +118,12 @@ public class RecetaEditar extends javax.swing.JFrame {
         LblFechaMostrarRE.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         LblFechaMostrarRE.setText("Fecha");
 
+        LblUltimaModificacionRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+        LblUltimaModificacionRE.setText("Ultima modificación:");
+
+        LblUltimaModificacionMostrarRE.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
+        LblUltimaModificacionMostrarRE.setText("Fecha");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,7 +162,12 @@ public class RecetaEditar extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LblFechaMostrarRE, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(LblFechaMostrarRE, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LblUltimaModificacionRE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(LblUltimaModificacionMostrarRE, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createSequentialGroup()
@@ -187,7 +200,10 @@ public class RecetaEditar extends javax.swing.JFrame {
                     .addComponent(LblPreparacionRE, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LblFechaMostrarRE, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LblFechaMostrarRE, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LblUltimaModificacionRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LblUltimaModificacionMostrarRE))
                     .addComponent(LblFechaRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -285,11 +301,12 @@ public class RecetaEditar extends javax.swing.JFrame {
         TxtAreaIngredientesRE.setText(ingredientes);
         TxtAreaPreparacionRE.setText(preparacion);
         LblFechaMostrarRE.setText(fecha);
+        LblUltimaModificacionMostrarRE.setText(ultimaModificacion);
     }
 
     public void modificarReceta() {
         //declaro variables
-        String nombreE = "", tipoE = "", ingredientesE = "", preparacionE = "";
+        String nombreE = "", tipoE = "", ingredientesE = "", preparacionE = "", ultimaModificacionE = "";
         int idE;
         boolean todoOk = false;
 
@@ -299,6 +316,7 @@ public class RecetaEditar extends javax.swing.JFrame {
         tipoE = ComboBoxTipoRE.getItemAt(ComboBoxTipoRE.getSelectedIndex());
         ingredientesE = TxtAreaIngredientesRE.getText();
         preparacionE = TxtAreaPreparacionRE.getText();
+        ultimaModificacionE = RecetaNueva.fechaActual();
 
         //comprovaciones varias de que los valores son correctos
         if (nombreE.equals("")) {
@@ -318,7 +336,7 @@ public class RecetaEditar extends javax.swing.JFrame {
             //la fecha no se toca nunca, (el id creo que tampoco)
             String SQL = "UPDATE recetas SET nombre = '" + nombreE + "', "
                     + "tipo = '" + tipoE + "', ingredientes = '" + ingredientesE + "',"
-                    + " preparacion = '"+preparacionE+"'WHERE id = '" + idE + "'";
+                    + " preparacion = '"+preparacionE+"', ultima_modificacion = '"+ultimaModificacionE+"' WHERE id = '" + idE + "'";
             cc.actualizarReceta(SQL, con);
             
             //vuelvo a recetas
@@ -340,6 +358,8 @@ public class RecetaEditar extends javax.swing.JFrame {
     private javax.swing.JLabel LblNombreRE;
     private javax.swing.JLabel LblPreparacionRE;
     private javax.swing.JLabel LblTipoRE;
+    private javax.swing.JLabel LblUltimaModificacionMostrarRE;
+    private javax.swing.JLabel LblUltimaModificacionRE;
     private javax.swing.JTextArea TxtAreaIngredientesRE;
     private javax.swing.JTextArea TxtAreaPreparacionRE;
     private javax.swing.JTextField TxtFieldIdRE;

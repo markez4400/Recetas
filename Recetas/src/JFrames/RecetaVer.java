@@ -18,7 +18,7 @@ public class RecetaVer extends javax.swing.JFrame {
     ConexionMYSQLServer cc = new ConexionMYSQLServer();
     Connection con = cc.conectar();
     
-    String nombre, tipo, ingredientes, preparacion, fecha;
+    String nombre, tipo, ingredientes, preparacion, fecha, ultimaModificacion;
     int id;
     
     
@@ -55,6 +55,8 @@ public class RecetaVer extends javax.swing.JFrame {
         TxtAreaIngredientesRV = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         TxtAreaPreparacionRV = new javax.swing.JTextArea();
+        LblUltimaModificacionRV = new javax.swing.JLabel();
+        LblUltimaModificacionEditarRV = new javax.swing.JLabel();
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel4.setText("Nombre:");
@@ -144,6 +146,12 @@ public class RecetaVer extends javax.swing.JFrame {
         TxtAreaPreparacionRV.setRows(5);
         jScrollPane2.setViewportView(TxtAreaPreparacionRV);
 
+        LblUltimaModificacionRV.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+        LblUltimaModificacionRV.setText("Ultima modificación:");
+
+        LblUltimaModificacionEditarRV.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
+        LblUltimaModificacionEditarRV.setText("Nombre:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -169,10 +177,15 @@ public class RecetaVer extends javax.swing.JFrame {
                     .addComponent(LblNombreEditarRV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LblIdEditarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LblFechaEditarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LblTipoEditarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(LblTipoEditarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LblIdEditarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(LblFechaEditarRV, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LblUltimaModificacionRV)
+                        .addGap(18, 18, 18)
+                        .addComponent(LblUltimaModificacionEditarRV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -201,7 +214,9 @@ public class RecetaVer extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LblFechaEditarRV)
-                    .addComponent(LblFechaRV))
+                    .addComponent(LblFechaRV)
+                    .addComponent(LblUltimaModificacionRV)
+                    .addComponent(LblUltimaModificacionEditarRV))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnEliminarRV, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
@@ -246,6 +261,7 @@ public class RecetaVer extends javax.swing.JFrame {
         abrir.ingredientes = ingredientes;
         abrir.preparacion = preparacion;
         abrir.fecha = fecha;
+        abrir.ultimaModificacion = ultimaModificacion;
         abrir.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BtnActualizarRVActionPerformed
@@ -267,6 +283,7 @@ public class RecetaVer extends javax.swing.JFrame {
         TxtAreaIngredientesRV.setText(ingredientes);
         TxtAreaPreparacionRV.setText(preparacion);
         LblFechaEditarRV.setText(fecha);
+        LblUltimaModificacionEditarRV.setText(ultimaModificacion);
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -319,6 +336,8 @@ public class RecetaVer extends javax.swing.JFrame {
     private javax.swing.JLabel LblPreparacionRV;
     private javax.swing.JLabel LblTipoEditarRV;
     private javax.swing.JLabel LblTipoRecetaRV;
+    private javax.swing.JLabel LblUltimaModificacionEditarRV;
+    private javax.swing.JLabel LblUltimaModificacionRV;
     private javax.swing.JTextArea TxtAreaIngredientesRV;
     private javax.swing.JTextArea TxtAreaPreparacionRV;
     private javax.swing.JButton jButton3;

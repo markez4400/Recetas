@@ -167,6 +167,7 @@ public class RecetaNueva extends javax.swing.JFrame {
         String ingredientes = "";
         String preparacion = "";
         String fecha = "";
+        String ultimaModificacion = "";
                 
         //1. recoger valores en variables:
         nombre = TxtFieldNombreRN.getText();
@@ -174,12 +175,13 @@ public class RecetaNueva extends javax.swing.JFrame {
         ingredientes = TxtAreaPreparacionRN.getText();
         preparacion = TxtAreaPreparacionRN.getText();
         fecha = fechaActual();
+        ultimaModificacion = fechaActual();
 
         //2. Restricciones
         if(comprovarVariables(nombre, tipo, ingredientes, preparacion)){
-            String SQL = "INSERT INTO recetas (nombre, tipo, ingredientes, preparacion, fecha)"
+            String SQL = "INSERT INTO recetas (nombre, tipo, ingredientes, preparacion, fecha, ultimaModificacion)"
                     + "VALUES('" + nombre + "','" + tipo + "','" + ingredientes + "',"
-                    + "'" + preparacion + "','" + fecha + "')";
+                    + "'" + preparacion + "','" + fecha + "', '"+ultimaModificacion+"')";
             
             //3. agrego SQL a la base de datos
             cc.crearReceta(SQL, con);
