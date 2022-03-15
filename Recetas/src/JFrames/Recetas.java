@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class Recetas extends javax.swing.JFrame {
@@ -26,6 +28,11 @@ public class Recetas extends javax.swing.JFrame {
             return false;
         }
     };
+    
+    //para centrar el contenido de la tabla
+    //final DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+    //tcr.setHorizontalAlignment(SwingConstants.CENTER);
+    //JTableRecetas.getColumnModel().getColumn(column).setCellRe nderer(tcr);
     
     ArrayList<Receta> recetasArrayObjetos= new ArrayList();
     
@@ -113,11 +120,11 @@ public class Recetas extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1003, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
