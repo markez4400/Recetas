@@ -64,12 +64,12 @@ public class RecetaNueva extends javax.swing.JFrame {
         });
 
         LblNombreRN.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        LblNombreRN.setText("Nombre:");
+        LblNombreRN.setText("Nombre: *");
 
         TxtFieldNombreRN.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
 
         LblIngredientesRN.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        LblIngredientesRN.setText("Ingredientes:");
+        LblIngredientesRN.setText("Ingredientes: *");
 
         TxtAreaPreparacionRN.setColumns(20);
         TxtAreaPreparacionRN.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
@@ -78,10 +78,10 @@ public class RecetaNueva extends javax.swing.JFrame {
         jScrollPane1.setViewportView(TxtAreaPreparacionRN);
 
         LblTipoRN.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        LblTipoRN.setText("Tipo de receta:");
+        LblTipoRN.setText("Tipo de receta: *");
 
         LblPreparacionRN.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        LblPreparacionRN.setText("Preparación:");
+        LblPreparacionRN.setText("Preparación: *");
 
         ComboBoxTipoRN.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         ComboBoxTipoRN.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrante", "Primero", "Segundo", "Plato Combinado", "Postre" }));
@@ -254,6 +254,11 @@ public class RecetaNueva extends javax.swing.JFrame {
         }else { correcto = true;}
                 
         return correcto;
+    }
+    
+    
+    public void rellenarComboTipos() {
+        
     }
     
     

@@ -55,13 +55,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="LblFechaRV" min="-2" pref="135" max="-2" attributes="0"/>
                   <Component id="LblPreparacionRV" min="-2" max="-2" attributes="0"/>
                   <Component id="LblIngredientesRV" min="-2" max="-2" attributes="0"/>
                   <Component id="LblNombreRV" min="-2" max="-2" attributes="0"/>
                   <Component id="LblIdRV" min="-2" max="-2" attributes="0"/>
                   <Component id="LblTipoRecetaRV" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="BtnAtrasRV" min="-2" pref="182" max="-2" attributes="0"/>
+                  <Component id="LblFechaRV" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">

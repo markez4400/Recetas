@@ -59,7 +59,7 @@ public class RecetaEditar extends javax.swing.JFrame {
         });
 
         LblTipoRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        LblTipoRE.setText("Tipo de receta:");
+        LblTipoRE.setText("Tipo de receta: *");
 
         TxtAreaPreparacionRE.setColumns(20);
         TxtAreaPreparacionRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
@@ -76,7 +76,7 @@ public class RecetaEditar extends javax.swing.JFrame {
         });
 
         LblPreparacionRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        LblPreparacionRE.setText("Preparación:");
+        LblPreparacionRE.setText("Preparación: *");
 
         BtnCrearRecetaRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         BtnCrearRecetaRE.setText("Actualizar receta");
@@ -88,7 +88,7 @@ public class RecetaEditar extends javax.swing.JFrame {
         });
 
         LblNombreRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        LblNombreRE.setText("Nombre:");
+        LblNombreRE.setText("Nombre: *");
 
         LblFechaRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         LblFechaRE.setText("Fecha de creacion:");
@@ -96,7 +96,7 @@ public class RecetaEditar extends javax.swing.JFrame {
         TxtFieldNombreRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
 
         LblIngredientesRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        LblIngredientesRE.setText("Ingredientes:");
+        LblIngredientesRE.setText("Ingredientes: *");
 
         ComboBoxTipoRE.setEditable(true);
         ComboBoxTipoRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
@@ -113,7 +113,7 @@ public class RecetaEditar extends javax.swing.JFrame {
         TxtFieldIdRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
 
         LblIdRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        LblIdRE.setText("Id:");
+        LblIdRE.setText("Id: *");
 
         LblFechaMostrarRE.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         LblFechaMostrarRE.setText("Fecha");
