@@ -7,9 +7,12 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableRowSorter;
 
 public class Recetas extends javax.swing.JFrame {
 
@@ -17,10 +20,12 @@ public class Recetas extends javax.swing.JFrame {
     ConexionMYSQLServer cc = new ConexionMYSQLServer();
     Connection con = cc.conectar();
      
-    
-    
     ResultSet rs = null;
     Statement st = null;
+    
+    
+    ArrayList<Receta> recetasArrayObjetos= new ArrayList();
+    
     
     DefaultTableModel modelo = new DefaultTableModel() { //sobrescribo el metodo isCellEditable para que no se pueda editar la tabla.
         @Override
@@ -29,21 +34,10 @@ public class Recetas extends javax.swing.JFrame {
         }
     };
     
-    //para centrar el contenido de la tabla
-    //final DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
-    //tcr.setHorizontalAlignment(SwingConstants.CENTER);
-    //JTableRecetas.getColumnModel().getColumn(column).setCellRe nderer(tcr);
     
-    ArrayList<Receta> recetasArrayObjetos= new ArrayList();
-    
-    
-    /**
-     * Creates new form Recetas
-     */
+    //CONSTRUCTOR
     public Recetas() {
         initComponents();
-        //ListaRecetas.setModel(modelo); //asigno el modelo al JList 
-        mostrarRecetas();
     }
 
     /**
@@ -63,6 +57,11 @@ public class Recetas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Recetas");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         BtnCrearReceta.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         BtnCrearReceta.setText("Crear nueva receta");
@@ -210,6 +209,13 @@ public class Recetas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JTableRecetasMouseClicked
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        
+        //ListaRecetas.setModel(modelo); //asigno el modelo al JList 
+        mostrarRecetas();
+     
+    }//GEN-LAST:event_formWindowActivated
+
     
     
     
@@ -300,8 +306,9 @@ public class Recetas extends javax.swing.JFrame {
         }
         //recogiendolos de la posicion del arraylist
         
-        
-        
+        //UNA VEZ LA TABLA ESTA RELLENADA, AHORA HACEMOOS QUE SE PUEDA ORDENAR X COLUMNA:
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modelo);
+        JTableRecetas.setRowSorter(sorter);
     }
         
 
