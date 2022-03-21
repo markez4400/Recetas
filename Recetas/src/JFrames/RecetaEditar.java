@@ -326,20 +326,9 @@ public class RecetaEditar extends javax.swing.JFrame {
         preparacionE = TxtAreaPreparacionRE.getText();
         ultimaModificacionE = RecetaNueva.fechaActual();
 
-        //comprovaciones varias de que los valores son correctos
-        if (nombreE.equals("")) {
-            JOptionPane.showMessageDialog(null, "El nombre no puede estar vacio.");
-        } else if (tipoE == null || tipoE.equals("")) {
-            JOptionPane.showMessageDialog(null, "Has de seleccionar un tipo de plato.");
-        } else if (ingredientesE.equals("")) {
-            JOptionPane.showMessageDialog(null, "Has de indicar los ingredientes.");
-        } else if (preparacionE.equals("")) {
-            JOptionPane.showMessageDialog(null, "Has de indicar la preparacion.");
-        } else {
-            todoOk = true;
-        }
-
-        if (todoOk) {
+        
+        //se comprueban las variables
+        if (RecetaNueva.comprovarVariables(nombreE, tipoE, ingredientesE, preparacionE)) {
             //guardar datos en base de datos usando UPDATE
             //la fecha no se toca nunca, (el id creo que tampoco)
             String SQL = "UPDATE recetas SET nombre = '" + nombreE + "', "

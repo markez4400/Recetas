@@ -250,20 +250,37 @@ public class RecetaNueva extends javax.swing.JFrame {
         });
     }
     
-    public boolean comprovarVariables(String nombre, String tipo, String ingredientes, String preparacion) {
+    public static boolean comprovarVariables(String nombre, String tipo, String ingredientes, String preparacion) {
         //nombre no puede estar vacio
-        boolean correcto = false;
+        boolean correcto = true;
+        
+        String faltaNombre = "";
+        String faltaTipo = "";
+        String faltaIngredientes = "";
+        String faltaPreparacion = "";
+        
         
         if (nombre.equals("")) {
-            JOptionPane.showMessageDialog(null, "El nombre no puede estar vacio.");
-        } else if (tipo == null || tipo.equals("")) {
-            JOptionPane.showMessageDialog(null, "Has de seleccionar un tipo de plato.");
-        } else if (ingredientes.equals("")) {
-            JOptionPane.showMessageDialog(null, "Has de escribir los ingredientes.");
-        } else if (preparacion.equals("")) {
-            JOptionPane.showMessageDialog(null, "Has de escribir la preparacion.");
-        } else {
-            correcto = true;
+            faltaNombre = "- Nombre\n";
+            correcto = false;
+        } 
+        if (tipo == null || tipo.equals("")) {
+            faltaTipo = "- Tipo.\n";
+            correcto = false;
+        }
+        if (ingredientes.equals("")) {
+            faltaIngredientes = "- Ingredientes\n";
+            correcto = false;
+        }
+        if (preparacion.equals("")) {
+            faltaPreparacion = "- Preparación.\n";
+            correcto = false;
+        } 
+        
+        if(correcto == false)
+        {
+            JOptionPane.showMessageDialog(null, "Falta rellenar los siguientes campos:\n\n" 
+                    + faltaNombre + faltaTipo + faltaIngredientes + faltaPreparacion);
         }
         
         return correcto;
