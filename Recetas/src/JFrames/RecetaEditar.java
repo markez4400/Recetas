@@ -3,6 +3,7 @@ package JFrames;
 import Classes.Receta;
 import ConexionesBD.ConexionMYSQLServer;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
@@ -18,6 +19,10 @@ public class RecetaEditar extends javax.swing.JFrame {
     //conexion
     ConexionMYSQLServer cc = new ConexionMYSQLServer();
     Connection con = cc.conectar();
+    
+    ResultSet rs = null;
+    Statement st = null;
+    
 
     public RecetaEditar() {
         initComponents();
@@ -232,6 +237,9 @@ public class RecetaEditar extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
+        
+        rellenarComboTipos();
+        
         mostrarValoresAntiguos();
     }//GEN-LAST:event_formWindowActivated
 
@@ -344,7 +352,35 @@ public class RecetaEditar extends javax.swing.JFrame {
             abrir.setVisible(true);
             this.dispose();
         }
+        
+    }
+    
+    
+    public void rellenarComboTipos() {
+        
+        String SQL = "Select tipo FROM tipos";
+        String tipo;
+        
+        ComboBoxTipoRE.removeAllItems(); //bacio el comboBox
 
+        try {
+            //recojo los valores en un el arraylist
+            st = con.createStatement();
+            rs = st.executeQuery(SQL);
+            
+            boolean r = rs.next();
+            while (r) {
+                tipo = rs.getString("tipo");
+                ComboBoxTipoRE.addItem(tipo);
+                r = rs.next();
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar TIPOS en ComboBox tipos.");
+            
+        }
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

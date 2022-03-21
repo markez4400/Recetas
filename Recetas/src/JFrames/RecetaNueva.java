@@ -1,5 +1,6 @@
 package JFrames;
 
+import Classes.Receta;
 import JFrames.MenuNuevo;
 import JFrames.Recetas;
 import java.sql.Statement;
@@ -8,18 +9,21 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import ConexionesBD.ConexionMYSQLServer;
 import java.sql.Connection;
-
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class RecetaNueva extends javax.swing.JFrame {
 
     //conexion
     ConexionMYSQLServer cc = new ConexionMYSQLServer();
     Connection con = cc.conectar();
-
+    
+    ResultSet rs = null;
+    Statement st = null;
     
     public RecetaNueva() {
         initComponents();
-     
+        
     }
 
     /**
@@ -46,6 +50,11 @@ public class RecetaNueva extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nueva receta");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         BtnAtrasRN.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         BtnAtrasRN.setText("Atrás");
@@ -154,10 +163,10 @@ public class RecetaNueva extends javax.swing.JFrame {
     public static String fechaActual() { //recoge la fecha actual
         Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/YYYY");
-
+        
         return formatoFecha.format(fecha);
     }
-
+    
 
     private void BtnCrearRecetaRNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCrearRecetaRNActionPerformed
 
@@ -168,7 +177,7 @@ public class RecetaNueva extends javax.swing.JFrame {
         String preparacion = "";
         String fecha = "";
         String ultimaModificacion = "";
-                
+
         //1. recoger valores en variables:
         nombre = TxtFieldNombreRN.getText();
         tipo = ComboBoxTipoRN.getItemAt(ComboBoxTipoRN.getSelectedIndex());
@@ -178,29 +187,33 @@ public class RecetaNueva extends javax.swing.JFrame {
         ultimaModificacion = fechaActual();
 
         //2. Restricciones
-        if(comprovarVariables(nombre, tipo, ingredientes, preparacion)){
+        if (comprovarVariables(nombre, tipo, ingredientes, preparacion)) {
             String SQL = "INSERT INTO recetas (nombre, tipo, ingredientes, preparacion, fecha, ultima_modificacion)"
                     + "VALUES('" + nombre + "','" + tipo + "','" + ingredientes + "',"
-                    + "'" + preparacion + "','" + fecha + "', '"+ultimaModificacion+"')";
-            
+                    + "'" + preparacion + "','" + fecha + "', '" + ultimaModificacion + "')";
+
             //3. agrego SQL a la base de datos
             cc.crearReceta(SQL, con);
-            
+
             //vuelvo a la pantalla Recetas:
             Recetas abrir = new Recetas();
             abrir.setVisible(true);
             this.dispose();
         }
-            
         
+
     }//GEN-LAST:event_BtnCrearRecetaRNActionPerformed
 
     private void BtnAtrasRNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAtrasRNActionPerformed
-
+        
         Recetas abrir = new Recetas();
         abrir.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnAtrasRNActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        rellenarComboTipos();
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -237,31 +250,52 @@ public class RecetaNueva extends javax.swing.JFrame {
         });
     }
     
-    
     public boolean comprovarVariables(String nombre, String tipo, String ingredientes, String preparacion) {
         //nombre no puede estar vacio
         boolean correcto = false;
         
-        
         if (nombre.equals("")) {
             JOptionPane.showMessageDialog(null, "El nombre no puede estar vacio.");
-        } else if (tipo == null || tipo.equals("")){
+        } else if (tipo == null || tipo.equals("")) {
             JOptionPane.showMessageDialog(null, "Has de seleccionar un tipo de plato.");
-        } else if (ingredientes.equals("")){
+        } else if (ingredientes.equals("")) {
             JOptionPane.showMessageDialog(null, "Has de escribir los ingredientes.");
-        }else if(preparacion.equals("")) {
+        } else if (preparacion.equals("")) {
             JOptionPane.showMessageDialog(null, "Has de escribir la preparacion.");
-        }else { correcto = true;}
-                
+        } else {
+            correcto = true;
+        }
+        
         return correcto;
     }
     
-    
     public void rellenarComboTipos() {
         
+        String SQL = "Select tipo FROM tipos";
+        String tipo;
+        
+        ComboBoxTipoRN.removeAllItems(); //bacio el comboBox
+
+        try {
+            //recojo los valores en un el arraylist
+            st = con.createStatement();
+            rs = st.executeQuery(SQL);
+            
+            boolean r = rs.next();
+            while (r) {
+                tipo = rs.getString("tipo");
+                ComboBoxTipoRN.addItem(tipo);
+                r = rs.next();
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar TIPOS en ComboBox tipos.");
+            
+        }
+        
+        
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAtrasRN;
