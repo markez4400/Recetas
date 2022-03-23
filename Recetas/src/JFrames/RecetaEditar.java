@@ -320,10 +320,10 @@ public class RecetaEditar extends javax.swing.JFrame {
 
         //recogo valores de los campos y los guardo en las variables
         idE = Integer.parseInt(TxtFieldIdRE.getText());
-        nombreE = TxtFieldNombreRE.getText();
+        nombreE = TxtFieldNombreRE.getText().replace("'", "''"); //para que se puedan agregar apostrofes
         tipoE = ComboBoxTipoRE.getItemAt(ComboBoxTipoRE.getSelectedIndex());
-        ingredientesE = TxtAreaIngredientesRE.getText();
-        preparacionE = TxtAreaPreparacionRE.getText();
+        ingredientesE = TxtAreaIngredientesRE.getText().replace("'", "''");;
+        preparacionE = TxtAreaPreparacionRE.getText().replace("'", "''");;
         ultimaModificacionE = RecetaNueva.fechaActual();
 
         

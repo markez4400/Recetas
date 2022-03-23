@@ -179,10 +179,10 @@ public class RecetaNueva extends javax.swing.JFrame {
         String ultimaModificacion = "";
 
         //1. recoger valores en variables:
-        nombre = TxtFieldNombreRN.getText();
+        nombre = TxtFieldNombreRN.getText().replace("'", "''"); // PARA QUE ACEPTE APOSTROFES /cambio 1 x 2 ' para que se agrege bien a BD
         tipo = ComboBoxTipoRN.getItemAt(ComboBoxTipoRN.getSelectedIndex());
-        ingredientes = TxtAreaPreparacionRN.getText();
-        preparacion = TxtAreaPreparacionRN.getText();
+        ingredientes = TxtAreaPreparacionRN.getText().replace("'", "''");;
+        preparacion = TxtAreaPreparacionRN.getText().replace("'", "''");;
         fecha = fechaActual();
         ultimaModificacion = fechaActual();
 
