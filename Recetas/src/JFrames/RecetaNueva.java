@@ -208,7 +208,7 @@ public class RecetaNueva extends javax.swing.JFrame {
         
         Recetas abrir = new Recetas();
         abrir.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_BtnAtrasRNActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated

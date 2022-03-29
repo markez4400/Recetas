@@ -232,7 +232,7 @@ public class RecetaEditar extends javax.swing.JFrame {
         //cierro ventana actual, abro ventana recetas.
         Recetas abrir = new Recetas();
         abrir.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_BtnAtrasREActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated

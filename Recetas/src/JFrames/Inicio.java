@@ -87,7 +87,7 @@ public class Inicio extends javax.swing.JFrame {
        
         Recetas abrir = new Recetas();
         abrir.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
         
     }//GEN-LAST:event_BtnRecetasActionPerformed
 
