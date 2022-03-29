@@ -264,7 +264,7 @@ public class RecetaNueva extends javax.swing.JFrame {
             faltaNombre = "- Nombre\n";
             correcto = false;
         } 
-        if (tipo == null || tipo.equals("")) {
+        if (tipo == null || tipo.equals("")) {//para que tenga que escoger 1
             faltaTipo = "- Tipo.\n";
             correcto = false;
         }

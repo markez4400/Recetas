@@ -32,7 +32,7 @@ public class ConexionMYSQLServer {
         return con;
     }
     
-    public static void borrarReceta(String SQL, Connection con) {
+    public void borrarReceta(String SQL, Connection con) {
         int resultado = 0; 
         try {
 
@@ -54,7 +54,7 @@ public class ConexionMYSQLServer {
     }
     
     
-    public static void crearReceta(String SQL, Connection con) {
+    public void crearReceta(String SQL, Connection con) {
         int resultado = 0; 
         try {
 
@@ -76,7 +76,7 @@ public class ConexionMYSQLServer {
     }
     
     
-    public static boolean actualizarReceta(String SQL, Connection con) {
+    public boolean actualizarReceta(String SQL, Connection con) {
         boolean correcto = false;
         int resultado = 0; 
         try {
@@ -110,7 +110,7 @@ public class ConexionMYSQLServer {
         Statement st = null;
 
         cb.removeAllItems(); //bacio el comboBox
-
+        cb.addItem("");
         try {
             //recojo los valores en un el arraylist
             st = con.createStatement();
