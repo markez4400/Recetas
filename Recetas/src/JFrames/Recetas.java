@@ -19,14 +19,12 @@ public class Recetas extends javax.swing.JFrame {
     //conexion
     ConexionMYSQLServer cc = new ConexionMYSQLServer();
     Connection con = cc.conectar();
-     
+
     ResultSet rs = null;
     Statement st = null;
-    
-    
-    ArrayList<Receta> recetasArrayObjetos= new ArrayList();
-    
-    
+
+    ArrayList<Receta> recetasArrayObjetos = new ArrayList();
+
     DefaultTableModel modelo = new DefaultTableModel() { //sobrescribo el metodo isCellEditable para que no se pueda editar la tabla.
         @Override
         public boolean isCellEditable(int row, int column) {
@@ -34,13 +32,13 @@ public class Recetas extends javax.swing.JFrame {
         }
     };
     
-    
+    //
+
     //CONSTRUCTOR
     public Recetas() {
         initComponents();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -52,6 +50,8 @@ public class Recetas extends javax.swing.JFrame {
         JTableRecetas = new javax.swing.JTable();
         ComboBoxTipoR = new javax.swing.JComboBox<>();
         BtnFiltrarTipoR = new javax.swing.JButton();
+        TFNombreR = new javax.swing.JTextField();
+        BtnNombreR = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Recetas");
@@ -139,6 +139,16 @@ public class Recetas extends javax.swing.JFrame {
             }
         });
 
+        TFNombreR.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+
+        BtnNombreR.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+        BtnNombreR.setText("Filtrar x Nombre");
+        BtnNombreR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnNombreRActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,9 +162,13 @@ public class Recetas extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(BtnCrearReceta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(ComboBoxTipoR, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TFNombreR, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ComboBoxTipoR, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(BtnFiltrarTipoR, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BtnNombreR, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnFiltrarTipoR, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -167,7 +181,11 @@ public class Recetas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ComboBoxTipoR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnFiltrarTipoR, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TFNombreR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnNombreR, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BtnAtrasR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BtnCrearReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -179,27 +197,27 @@ public class Recetas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnAtrasRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAtrasRActionPerformed
-               
+
         Inicio abrir = new Inicio();
         abrir.setVisible(true); //abro la nueva ventana
         this.dispose(); //cierro la ventana actual
-        
+
     }//GEN-LAST:event_BtnAtrasRActionPerformed
 
     private void BtnCrearRecetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCrearRecetaActionPerformed
-     
+
         RecetaNueva abrir = new RecetaNueva();
         abrir.setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_BtnCrearRecetaActionPerformed
 
     private void JTableRecetasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTableRecetasMouseClicked
-        
+
         //al hacer doble click:
         if (evt.getClickCount() == 2) {
             //JOptionPane.showMessageDialog(rootPane, "Has dado click en la receta: " + JTableRecetas.getSelectedRow());
-            
+
             //recoger el valor del id, es el 1r numero:
             int id, row;
             Receta r = new Receta();
@@ -209,7 +227,6 @@ public class Recetas extends javax.swing.JFrame {
             String d = f.toString();
             id = Integer.parseInt(d);
 
-            
             //busco el objeto seleccionado segun el id
             for (int x = 0; x < recetasArrayObjetos.size(); x++) {
                 if (id == recetasArrayObjetos.get(x).getId()) {
@@ -232,28 +249,33 @@ public class Recetas extends javax.swing.JFrame {
     }//GEN-LAST:event_JTableRecetasMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        
+
         //era para mostrar recetas pero daba errores. 
-        
+
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       String SQL = "SELECT * FROM recetas";
+        String SQL = "SELECT * FROM recetas";
         mostrarRecetas(SQL);
-       rellenarComboTipos();
+        cc.rellenarComboTipos(ComboBoxTipoR, con);
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnFiltrarTipoRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnFiltrarTipoRActionPerformed
-        
+
         String tipo = ComboBoxTipoR.getItemAt(ComboBoxTipoR.getSelectedIndex());
-        
-        String SQL ="SELECT * FROM recetas WHERE tipo = '"+tipo+"'";
+
+        String SQL = "SELECT * FROM recetas WHERE tipo = '" + tipo + "'";
         mostrarRecetas(SQL);
     }//GEN-LAST:event_BtnFiltrarTipoRActionPerformed
 
-    
-    
-    
+    private void BtnNombreRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNombreRActionPerformed
+        String nombre = TFNombreR.getText();
+        nombre = nombre + "%";
+        
+        String SQL = "SELECT * FROM recetas WHERE nombre LIKE '"+nombre+"'";
+        mostrarRecetas(SQL);
+    }//GEN-LAST:event_BtnNombreRActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -288,25 +310,22 @@ public class Recetas extends javax.swing.JFrame {
             }
         });
     }
-    
-    public void mostrarRecetas(String SQL)
-    {       
+
+    public void mostrarRecetas(String SQL) {
         recetasArrayObjetos.clear();
         modelo.setRowCount(0);
         JTableRecetas.setModel(modelo);
-        
+
         //arraylist necesario + objeto declarados arriba del todo  
-        
         //codigo SQL que ejecutara el query:        
-        try{
+        try {
             //recoger recetas en arraylist
             st = con.createStatement();
             rs = st.executeQuery(SQL);
-            
-        //recojo los valores del result set i los guardo en el arrayObjetos.
-        
+
+            //recojo los valores del result set i los guardo en el arrayObjetos.
             boolean r = rs.next(); //indica si existe una siguiente linea
-            while(r) {
+            while (r) {
                 Receta r1 = new Receta(); //como creo el objeto aqui, se borra cada vez que se recreea
                 //se recogen los valores de la BD a 1 objeto
                 r1.setId(rs.getInt("id"));
@@ -318,69 +337,45 @@ public class Recetas extends javax.swing.JFrame {
                 r1.setUltimaModificacion(rs.getString("ultima_modificacion"));
                 //ahora almacenamos el objeto en el arraylist:               
                 recetasArrayObjetos.add(r1);
-                
+
                 r = rs.next(); //paso a la siguiente receta
             }
-            
-        }catch(Exception e) {
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al recoger valores de la Base de Datos.");
         }
-        
+
         //Añado los elementos del array de objetos al modelo de la tabla:
-        
-        modelo.setColumnIdentifiers(new Object [] {"Id", "Tipo", "Nombre", "Fecha"});
-        
+        modelo.setColumnIdentifiers(new Object[]{"Id", "Tipo", "Nombre", "Fecha"});
+
         //mostrar cada receta en cada item del JList junto con su nombre, 
         //modelo.removeAllElements();//primero borro todo 
-        for(int x = 0; x < recetasArrayObjetos.size(); x++)
-        {
-            modelo.addRow(new Object []{recetasArrayObjetos.get(x).getId(),recetasArrayObjetos.get(x).getTipo(), 
+        for (int x = 0; x < recetasArrayObjetos.size(); x++) {
+            modelo.addRow(new Object[]{recetasArrayObjetos.get(x).getId(), recetasArrayObjetos.get(x).getTipo(),
                 recetasArrayObjetos.get(x).getNombre(), recetasArrayObjetos.get(x).getFecha()});
-            
+
             //modelo.addElement(recetasArrayObjetos.get(x).getId() + "-|| " + recetasArrayObjetos.get(x).getNombre()
             //+ " || " + recetasArrayObjetos.get(x).getTipo() + " || " + recetasArrayObjetos.get(x).getFecha());
         }
         //recogiendolos de la posicion del arraylist
-        
+
         //UNA VEZ LA TABLA ESTA RELLENADA, AHORA HACEMOOS QUE SE PUEDA ORDENAR X COLUMNA:
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modelo);
         JTableRecetas.setRowSorter(sorter);
     }
-    
-    public void rellenarComboTipos() {
-        
-        String SQL = "Select tipo FROM tipos";
-        String tipo;
-        
-        ComboBoxTipoR.removeAllItems(); //bacio el comboBox
 
-        try {
-            //recojo los valores en un el arraylist
-            st = con.createStatement();
-            rs = st.executeQuery(SQL);
-            
-            boolean r = rs.next();
-            while (r) {
-                tipo = rs.getString("tipo");
-                ComboBoxTipoR.addItem(tipo);
-                r = rs.next();
-            }
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al cargar TIPOS en ComboBox tipos.");
-            
-        }
-        
-        
-    }
-        
+    
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAtrasR;
     private javax.swing.JButton BtnCrearReceta;
     private javax.swing.JButton BtnFiltrarTipoR;
+    private javax.swing.JButton BtnNombreR;
     private javax.swing.JComboBox<String> ComboBoxTipoR;
     private javax.swing.JTable JTableRecetas;
+    private javax.swing.JTextField TFNombreR;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

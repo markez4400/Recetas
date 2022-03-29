@@ -212,7 +212,7 @@ public class RecetaNueva extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnAtrasRNActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        rellenarComboTipos();
+        cc.rellenarComboTipos(ComboBoxTipoRN, con);
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -286,32 +286,6 @@ public class RecetaNueva extends javax.swing.JFrame {
         return correcto;
     }
     
-    public void rellenarComboTipos() {
-        
-        String SQL = "Select tipo FROM tipos";
-        String tipo;
-        
-        ComboBoxTipoRN.removeAllItems(); //bacio el comboBox
-
-        try {
-            //recojo los valores en un el arraylist
-            st = con.createStatement();
-            rs = st.executeQuery(SQL);
-            
-            boolean r = rs.next();
-            while (r) {
-                tipo = rs.getString("tipo");
-                ComboBoxTipoRN.addItem(tipo);
-                r = rs.next();
-            }
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al cargar TIPOS en ComboBox tipos.");
-            
-        }
-        
-        
-    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

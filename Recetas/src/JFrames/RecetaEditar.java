@@ -238,7 +238,7 @@ public class RecetaEditar extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
         
-        rellenarComboTipos();
+        cc.rellenarComboTipos(ComboBoxTipoRE, con);
         
         mostrarValoresAntiguos();
     }//GEN-LAST:event_formWindowActivated
@@ -345,32 +345,10 @@ public class RecetaEditar extends javax.swing.JFrame {
     }
     
     
-    public void rellenarComboTipos() {
-        
-        String SQL = "Select tipo FROM tipos";
-        String tipo;
-        
-        ComboBoxTipoRE.removeAllItems(); //bacio el comboBox
-
-        try {
-            //recojo los valores en un el arraylist
-            st = con.createStatement();
-            rs = st.executeQuery(SQL);
-            
-            boolean r = rs.next();
-            while (r) {
-                tipo = rs.getString("tipo");
-                ComboBoxTipoRE.addItem(tipo);
-                r = rs.next();
-            }
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al cargar TIPOS en ComboBox tipos.");
-            
-        }
+    
         
         
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAtrasRE;

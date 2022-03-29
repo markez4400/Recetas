@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 
@@ -100,6 +101,31 @@ public class ConexionMYSQLServer {
     }
     
     
+    public void rellenarComboTipos(JComboBox cb, Connection con) {
 
+        String SQL = "Select tipo FROM tipos";
+        String tipo;
+        
+        ResultSet rs = null;
+        Statement st = null;
+
+        cb.removeAllItems(); //bacio el comboBox
+
+        try {
+            //recojo los valores en un el arraylist
+            st = con.createStatement();
+            rs = st.executeQuery(SQL);
+
+            boolean r = rs.next();
+            while (r) {
+                tipo = rs.getString("tipo");
+                cb.addItem(tipo);
+                r = rs.next();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar TIPOS en ComboBox tipos.");
+
+        }
+    }
     
 }
