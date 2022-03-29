@@ -5,6 +5,7 @@ import ConexionesBD.ConexionMYSQLServer;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -314,7 +315,7 @@ public class RecetaEditar extends javax.swing.JFrame {
 
     public void modificarReceta() {
         //declaro variables
-        String nombreE = "", tipoE = "", ingredientesE = "", preparacionE = "", ultimaModificacionE = "";
+        String nombreE = "", tipoE = "", ingredientesE = "", preparacionE = "";
         int idE;
         boolean todoOk = false;
 
@@ -324,7 +325,7 @@ public class RecetaEditar extends javax.swing.JFrame {
         tipoE = ComboBoxTipoRE.getItemAt(ComboBoxTipoRE.getSelectedIndex());
         ingredientesE = TxtAreaIngredientesRE.getText().replace("'", "''");;
         preparacionE = TxtAreaPreparacionRE.getText().replace("'", "''");;
-        ultimaModificacionE = RecetaNueva.fechaActual();
+        Date ultimaModificacionE = RecetaNueva.fechaActualDate();
 
         
         //se comprueban las variables
