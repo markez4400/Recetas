@@ -10,20 +10,22 @@ import javax.swing.JOptionPane;
 import ConexionesBD.ConexionMYSQLServer;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class RecetaNueva extends javax.swing.JFrame {
 
     //conexion
     ConexionMYSQLServer cc = new ConexionMYSQLServer();
     Connection con = cc.conectar();
-    
+
     ResultSet rs = null;
     Statement st = null;
-    
+
     public RecetaNueva() {
         initComponents();
-        
+
     }
 
     /**
@@ -160,31 +162,34 @@ public class RecetaNueva extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public static String fechaActual() { //recoge la fecha actual
-        Date fecha = new Date();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/YYYY");
-        
-        return formatoFecha.format(fecha);
+    public static String fechaActualString() { //recoge la fecha actual
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-YYYY");
+        String strDate = dateFormat.format(date);
+
+        return strDate;
     }
-    
+
+    public static Date fechaActualDate() {
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-YYYY");
+        String strDate = dateFormat.format(date);
+
+        java.sql.Date date2 = new java.sql.Date(date.getTime());
+
+        return date2;
+    }
+
 
     private void BtnCrearRecetaRNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCrearRecetaRNActionPerformed
 
-        //declaro variables
-        String nombre = "";
-        String tipo = "";
-        String ingredientes = "";
-        String preparacion = "";
-        String fecha = "";
-        String ultimaModificacion = "";
-
-        //1. recoger valores en variables:
-        nombre = TxtFieldNombreRN.getText().replace("'", "''"); // PARA QUE ACEPTE APOSTROFES /cambio 1 x 2 ' para que se agrege bien a BD
-        tipo = ComboBoxTipoRN.getItemAt(ComboBoxTipoRN.getSelectedIndex());
-        ingredientes = TxtAreaPreparacionRN.getText().replace("'", "''");;
-        preparacion = TxtAreaPreparacionRN.getText().replace("'", "''");;
-        fecha = fechaActual();
-        ultimaModificacion = fechaActual();
+        //declaro variables y recogo valores 
+        String nombre = TxtFieldNombreRN.getText().replace("'", "''"); // PARA QUE ACEPTE APOSTROFES /cambio 1 x 2 ' para que se agrege bien a BD
+        String tipo = ComboBoxTipoRN.getItemAt(ComboBoxTipoRN.getSelectedIndex());
+        String ingredientes = TxtAreaPreparacionRN.getText().replace("'", "''");;
+        String preparacion = TxtAreaPreparacionRN.getText().replace("'", "''");;
+        Date fecha = fechaActualDate();
+        Date ultimaModificacion = fechaActualDate();
 
         //2. Restricciones
         if (comprovarVariables(nombre, tipo, ingredientes, preparacion)) {
@@ -200,12 +205,11 @@ public class RecetaNueva extends javax.swing.JFrame {
             abrir.setVisible(true);
             this.dispose();
         }
-        
+
 
     }//GEN-LAST:event_BtnCrearRecetaRNActionPerformed
 
     private void BtnAtrasRNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAtrasRNActionPerformed
-        
         Recetas abrir = new Recetas();
         abrir.setVisible(true);
         this.dispose();
@@ -249,21 +253,20 @@ public class RecetaNueva extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public static boolean comprovarVariables(String nombre, String tipo, String ingredientes, String preparacion) {
         //nombre no puede estar vacio
         boolean correcto = true;
-        
+
         String faltaNombre = "";
         String faltaTipo = "";
         String faltaIngredientes = "";
         String faltaPreparacion = "";
-        
-        
+
         if (nombre.equals("")) {
             faltaNombre = "- Nombre\n";
             correcto = false;
-        } 
+        }
         if (tipo == null || tipo.equals("")) {//para que tenga que escoger 1
             faltaTipo = "- Tipo.\n";
             correcto = false;
@@ -275,17 +278,15 @@ public class RecetaNueva extends javax.swing.JFrame {
         if (preparacion.equals("")) {
             faltaPreparacion = "- Preparación.\n";
             correcto = false;
-        } 
-        
-        if(correcto == false)
-        {
-            JOptionPane.showMessageDialog(null, "Falta rellenar los siguientes campos:\n\n" 
+        }
+
+        if (correcto == false) {
+            JOptionPane.showMessageDialog(null, "Falta rellenar los siguientes campos:\n\n"
                     + faltaNombre + faltaTipo + faltaIngredientes + faltaPreparacion);
         }
-        
+
         return correcto;
     }
-    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
