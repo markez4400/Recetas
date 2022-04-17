@@ -25,7 +25,8 @@ public class RecetaNueva extends javax.swing.JFrame {
 
     public RecetaNueva() {
         initComponents();
-
+        this.setResizable(false);
+        cc.rellenarComboTipos(ComboBoxTipoRN, con);
     }
 
     /**
@@ -48,7 +49,7 @@ public class RecetaNueva extends javax.swing.JFrame {
         LblPreparacionRN = new javax.swing.JLabel();
         ComboBoxTipoRN = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
-        TxtAreaIngredientesRN1 = new javax.swing.JTextArea();
+        TxtAreaIngredientesRN = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nueva receta");
@@ -98,11 +99,11 @@ public class RecetaNueva extends javax.swing.JFrame {
         ComboBoxTipoRN.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrante", "Primero", "Segundo", "Plato Combinado", "Postre" }));
         ComboBoxTipoRN.setSelectedIndex(-1);
 
-        TxtAreaIngredientesRN1.setColumns(20);
-        TxtAreaIngredientesRN1.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        TxtAreaIngredientesRN1.setLineWrap(true);
-        TxtAreaIngredientesRN1.setRows(5);
-        jScrollPane3.setViewportView(TxtAreaIngredientesRN1);
+        TxtAreaIngredientesRN.setColumns(20);
+        TxtAreaIngredientesRN.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+        TxtAreaIngredientesRN.setLineWrap(true);
+        TxtAreaIngredientesRN.setRows(5);
+        jScrollPane3.setViewportView(TxtAreaIngredientesRN);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -183,11 +184,13 @@ public class RecetaNueva extends javax.swing.JFrame {
 
     private void BtnCrearRecetaRNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCrearRecetaRNActionPerformed
 
+        String ingredientes = "", preparacion = "";
+        
         //declaro variables y recogo valores 
         String nombre = TxtFieldNombreRN.getText().replace("'", "''"); // PARA QUE ACEPTE APOSTROFES /cambio 1 x 2 ' para que se agrege bien a BD
         String tipo = ComboBoxTipoRN.getItemAt(ComboBoxTipoRN.getSelectedIndex());
-        String ingredientes = TxtAreaPreparacionRN.getText().replace("'", "''");;
-        String preparacion = TxtAreaPreparacionRN.getText().replace("'", "''");;
+        ingredientes = TxtAreaIngredientesRN.getText().replace("'", "''");
+        preparacion = TxtAreaPreparacionRN.getText().replace("'", "''");
         Date fecha = fechaActualDate();
         Date ultimaModificacion = fechaActualDate();
 
@@ -216,7 +219,7 @@ public class RecetaNueva extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnAtrasRNActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        cc.rellenarComboTipos(ComboBoxTipoRN, con);
+       
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -297,7 +300,7 @@ public class RecetaNueva extends javax.swing.JFrame {
     private javax.swing.JLabel LblNombreRN;
     private javax.swing.JLabel LblPreparacionRN;
     private javax.swing.JLabel LblTipoRN;
-    private javax.swing.JTextArea TxtAreaIngredientesRN1;
+    private javax.swing.JTextArea TxtAreaIngredientesRN;
     private javax.swing.JTextArea TxtAreaPreparacionRN;
     private javax.swing.JTextField TxtFieldNombreRN;
     private javax.swing.JScrollPane jScrollPane1;

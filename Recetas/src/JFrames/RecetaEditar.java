@@ -27,6 +27,7 @@ public class RecetaEditar extends javax.swing.JFrame {
 
     public RecetaEditar() {
         initComponents();
+        this.setResizable(false);
     }
 
     /**
@@ -51,22 +52,29 @@ public class RecetaEditar extends javax.swing.JFrame {
         ComboBoxTipoRE = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         TxtAreaIngredientesRE = new javax.swing.JTextArea();
-        TxtFieldIdRE = new javax.swing.JTextField();
         LblIdRE = new javax.swing.JLabel();
         LblFechaMostrarRE = new javax.swing.JLabel();
         LblUltimaModificacionRE = new javax.swing.JLabel();
         LblUltimaModificacionMostrarRE = new javax.swing.JLabel();
+        LabelEditIdRE = new javax.swing.JLabel();
+        BtnEliminarRecetaRE = new javax.swing.JButton();
+        BtnEditarRecetaRE = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ver / Editar Receta:");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
         LblTipoRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         LblTipoRE.setText("Tipo de receta: *");
 
+        TxtAreaPreparacionRE.setEditable(false);
         TxtAreaPreparacionRE.setColumns(20);
         TxtAreaPreparacionRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         TxtAreaPreparacionRE.setLineWrap(true);
@@ -97,26 +105,24 @@ public class RecetaEditar extends javax.swing.JFrame {
         LblNombreRE.setText("Nombre: *");
 
         LblFechaRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        LblFechaRE.setText("Fecha de creacion:");
+        LblFechaRE.setText("Fecha de creación:");
 
+        TxtFieldNombreRE.setEditable(false);
         TxtFieldNombreRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
 
         LblIngredientesRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         LblIngredientesRE.setText("Ingredientes: *");
 
-        ComboBoxTipoRE.setEditable(true);
         ComboBoxTipoRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         ComboBoxTipoRE.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrante", "Primero", "Segundo", "Plato Combinado", "Postre" }));
         ComboBoxTipoRE.setSelectedIndex(-1);
 
+        TxtAreaIngredientesRE.setEditable(false);
         TxtAreaIngredientesRE.setColumns(20);
         TxtAreaIngredientesRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         TxtAreaIngredientesRE.setLineWrap(true);
         TxtAreaIngredientesRE.setRows(5);
         jScrollPane1.setViewportView(TxtAreaIngredientesRE);
-
-        TxtFieldIdRE.setEditable(false);
-        TxtFieldIdRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
 
         LblIdRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         LblIdRE.setText("Id: *");
@@ -129,6 +135,26 @@ public class RecetaEditar extends javax.swing.JFrame {
 
         LblUltimaModificacionMostrarRE.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         LblUltimaModificacionMostrarRE.setText("Fecha");
+
+        LabelEditIdRE.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
+        LabelEditIdRE.setText("3308");
+
+        BtnEliminarRecetaRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+        BtnEliminarRecetaRE.setText("Eliminar receta");
+        BtnEliminarRecetaRE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEliminarRecetaREActionPerformed(evt);
+            }
+        });
+
+        BtnEditarRecetaRE.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+        BtnEditarRecetaRE.setText("EditarReceta");
+        BtnEditarRecetaRE.setToolTipText("");
+        BtnEditarRecetaRE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEditarRecetaREActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,15 +182,20 @@ public class RecetaEditar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(BtnEliminarRecetaRE, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(BtnCrearRecetaRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LabelEditIdRE, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BtnEditarRecetaRE, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1)
-                            .addComponent(TxtFieldNombreRE, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(TxtFieldIdRE, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(TxtFieldNombreRE)
+                                .addGap(178, 178, 178))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,15 +215,17 @@ public class RecetaEditar extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxtFieldIdRE)
-                    .addComponent(LblIdRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LblIdRE, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LabelEditIdRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnEditarRecetaRE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TxtFieldNombreRE)
                     .addComponent(LblNombreRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(11, 11, 11)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LblTipoRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ComboBoxTipoRE))
@@ -210,11 +243,12 @@ public class RecetaEditar extends javax.swing.JFrame {
                         .addComponent(LblFechaMostrarRE, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(LblUltimaModificacionRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(LblUltimaModificacionMostrarRE))
-                    .addComponent(LblFechaRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(LblFechaRE, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnAtrasRE, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-                    .addComponent(BtnCrearRecetaRE, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+                    .addComponent(BtnAtrasRE, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnCrearRecetaRE, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                    .addComponent(BtnEliminarRecetaRE, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -243,6 +277,39 @@ public class RecetaEditar extends javax.swing.JFrame {
         
         mostrarValoresAntiguos();
     }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
+
+    private void BtnEliminarRecetaREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarRecetaREActionPerformed
+
+        if (JOptionPane.showConfirmDialog(null, "Seguro que deseas borrar la receta?", "Aviso importante!",
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) 
+        {
+            //yes option
+            
+           //borrar receta de la bd + mostrar mensaje de que se ha borrado.
+            String SQL = "DELETE FROM recetas WHERE id = '" + id + "'";
+            cc.borrarReceta(SQL, con);
+            
+            //una vez borrada, volvemos al JFrame "recetas".
+            Recetas abrir = new Recetas();
+            abrir.setVisible(true);
+            this.dispose();
+        } else {
+            // no option
+        }
+    }//GEN-LAST:event_BtnEliminarRecetaREActionPerformed
+
+    private void BtnEditarRecetaREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditarRecetaREActionPerformed
+        
+        TxtFieldNombreRE.setEditable(true);
+        TxtAreaIngredientesRE.setEditable(true);
+        TxtAreaPreparacionRE.setEditable(true);
+        
+        JOptionPane.showMessageDialog(null, "Ahora puedes modificar la receta.", "Info", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_BtnEditarRecetaREActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,27 +351,29 @@ public class RecetaEditar extends javax.swing.JFrame {
         
         switch (tipo) {
             case "Entrante":
-                index = 0;
-                break;
-            case "Primero":
                 index = 1;
                 break;
-            case "Segundo":
+            case "Primero":
                 index = 2;
                 break;
-            case "Plato Combinado":
+            case "Segundo":
                 index = 3;
                 break;
-            case "Postre":
+            case "Combinado":
                 index = 4;
                 break;
+            case "Postre":
+                index = 5;
+                break;
+            case "Otro":
+                index = 6;
             default:
-                index = -1;
+                index = 0;
                 break;
         }
 
         //mostrar los valores antiguos en las celdas
-        TxtFieldIdRE.setText(String.valueOf(id));
+        LabelEditIdRE.setText(String.valueOf(id));
         TxtFieldNombreRE.setText(nombre);
         ComboBoxTipoRE.setSelectedIndex(index);
         TxtAreaIngredientesRE.setText(ingredientes);
@@ -320,7 +389,7 @@ public class RecetaEditar extends javax.swing.JFrame {
         boolean todoOk = false;
 
         //recogo valores de los campos y los guardo en las variables
-        idE = Integer.parseInt(TxtFieldIdRE.getText());
+        idE = Integer.parseInt(LabelEditIdRE.getText());
         nombreE = TxtFieldNombreRE.getText().replace("'", "''"); //para que se puedan agregar apostrofes
         tipoE = ComboBoxTipoRE.getItemAt(ComboBoxTipoRE.getSelectedIndex());
         ingredientesE = TxtAreaIngredientesRE.getText().replace("'", "''");;
@@ -354,7 +423,10 @@ public class RecetaEditar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAtrasRE;
     private javax.swing.JButton BtnCrearRecetaRE;
+    private javax.swing.JButton BtnEditarRecetaRE;
+    private javax.swing.JButton BtnEliminarRecetaRE;
     private javax.swing.JComboBox<String> ComboBoxTipoRE;
+    private javax.swing.JLabel LabelEditIdRE;
     private javax.swing.JLabel LblFechaMostrarRE;
     private javax.swing.JLabel LblFechaRE;
     private javax.swing.JLabel LblIdRE;
@@ -366,7 +438,6 @@ public class RecetaEditar extends javax.swing.JFrame {
     private javax.swing.JLabel LblUltimaModificacionRE;
     private javax.swing.JTextArea TxtAreaIngredientesRE;
     private javax.swing.JTextArea TxtAreaPreparacionRE;
-    private javax.swing.JTextField TxtFieldIdRE;
     private javax.swing.JTextField TxtFieldNombreRE;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

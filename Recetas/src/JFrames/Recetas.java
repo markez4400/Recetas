@@ -37,6 +37,7 @@ public class Recetas extends javax.swing.JFrame {
     //CONSTRUCTOR
     public Recetas() {
         initComponents();
+        this.setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -52,6 +53,7 @@ public class Recetas extends javax.swing.JFrame {
         BtnFiltrarTipoR = new javax.swing.JButton();
         TFNombreR = new javax.swing.JTextField();
         BtnNombreR = new javax.swing.JButton();
+        BtnFiltrarTipoR1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Recetas");
@@ -115,6 +117,16 @@ public class Recetas extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(JTableRecetas);
+        if (JTableRecetas.getColumnModel().getColumnCount() > 0) {
+            JTableRecetas.getColumnModel().getColumn(0).setResizable(false);
+            JTableRecetas.getColumnModel().getColumn(0).setPreferredWidth(10);
+            JTableRecetas.getColumnModel().getColumn(1).setResizable(false);
+            JTableRecetas.getColumnModel().getColumn(1).setPreferredWidth(100);
+            JTableRecetas.getColumnModel().getColumn(2).setResizable(false);
+            JTableRecetas.getColumnModel().getColumn(2).setPreferredWidth(300);
+            JTableRecetas.getColumnModel().getColumn(3).setResizable(false);
+            JTableRecetas.getColumnModel().getColumn(3).setPreferredWidth(50);
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -132,7 +144,7 @@ public class Recetas extends javax.swing.JFrame {
         ComboBoxTipoR.setSelectedIndex(-1);
 
         BtnFiltrarTipoR.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        BtnFiltrarTipoR.setText("Filtrar x Tipo");
+        BtnFiltrarTipoR.setText("Filtrar por tipo");
         BtnFiltrarTipoR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnFiltrarTipoRActionPerformed(evt);
@@ -142,10 +154,18 @@ public class Recetas extends javax.swing.JFrame {
         TFNombreR.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
 
         BtnNombreR.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        BtnNombreR.setText("Filtrar x Nombre");
+        BtnNombreR.setText("Filtrar por nombre");
         BtnNombreR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnNombreRActionPerformed(evt);
+            }
+        });
+
+        BtnFiltrarTipoR1.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+        BtnFiltrarTipoR1.setText("Reset de filtros");
+        BtnFiltrarTipoR1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnFiltrarTipoR1ActionPerformed(evt);
             }
         });
 
@@ -162,9 +182,12 @@ public class Recetas extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(BtnCrearReceta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(TFNombreR, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ComboBoxTipoR, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(BtnFiltrarTipoR1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ComboBoxTipoR, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(BtnNombreR, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,7 +203,8 @@ public class Recetas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ComboBoxTipoR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnFiltrarTipoR, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(BtnFiltrarTipoR, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(BtnFiltrarTipoR1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TFNombreR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -235,7 +259,7 @@ public class Recetas extends javax.swing.JFrame {
             }
 
             //añado el objeto r al paquete que envio a la pantalla "RecetaVer".
-            RecetaVer abrir = new RecetaVer();
+            RecetaEditar abrir = new RecetaEditar();
             abrir.id = r.getId();
             abrir.nombre = r.getNombre();
             abrir.tipo = r.getTipo();
@@ -270,11 +294,22 @@ public class Recetas extends javax.swing.JFrame {
 
     private void BtnNombreRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNombreRActionPerformed
         String nombre = TFNombreR.getText();
-        nombre = nombre + "%";
         
-        String SQL = "SELECT * FROM recetas WHERE nombre LIKE '"+nombre+"'";
-        mostrarRecetas(SQL);
+        if(nombre.equals("")){
+            JOptionPane.showMessageDialog(null, "Has de escribir caracteres en el campo para poder filtrar por nombre.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            nombre = "%" + nombre + "%";
+            String SQL = "SELECT * FROM recetas WHERE nombre LIKE '"+nombre+"'";
+            mostrarRecetas(SQL);
+        }
+        
     }//GEN-LAST:event_BtnNombreRActionPerformed
+
+    private void BtnFiltrarTipoR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnFiltrarTipoR1ActionPerformed
+        // TODO add your handling code here:      
+        String SQL = "SELECT * FROM recetas";
+        mostrarRecetas(SQL);
+    }//GEN-LAST:event_BtnFiltrarTipoR1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -372,6 +407,7 @@ public class Recetas extends javax.swing.JFrame {
     private javax.swing.JButton BtnAtrasR;
     private javax.swing.JButton BtnCrearReceta;
     private javax.swing.JButton BtnFiltrarTipoR;
+    private javax.swing.JButton BtnFiltrarTipoR1;
     private javax.swing.JButton BtnNombreR;
     private javax.swing.JComboBox<String> ComboBoxTipoR;
     private javax.swing.JTable JTableRecetas;
